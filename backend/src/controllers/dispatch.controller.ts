@@ -8,8 +8,6 @@ export class DispatchController {
     private readonly fuelService: FuelService
   ) {}
   @Get() findAll() { return this.service.findAll(); }
-  @Get(':id') findOne(@Param('id') id: string) { return this.service.findOne(Number(id)); }
-  @Post() create(@Body() payload: any) { return this.service.create(payload); }
   @Get('fuel-cost-differences')
   getFuelCostDifferences(@Query('status') status?: string) {
     return this.service.getFuelCostDifferences(status);
@@ -22,4 +20,6 @@ export class DispatchController {
   getFuelRecords(@Param('id') id: string) {
     return this.fuelService.findByDispatchOrderId(Number(id));
   }
+  @Get(':id') findOne(@Param('id') id: string) { return this.service.findOne(Number(id)); }
+  @Post() create(@Body() payload: any) { return this.service.create(payload); }
 }
